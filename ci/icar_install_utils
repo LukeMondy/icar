@@ -21,8 +21,8 @@ function install_szip {
     wget --no-check-certificate -q http://www.hdfgroup.org/ftp/lib-external/szip/2.1.1/src/szip-2.1.1.tar.gz
     tar -xzf szip-2.1.1.tar.gz
     cd szip-2.1.1
-    ./configure --prefix=$INSTALLDIR &> config.log
-    make &> make.log
+    ./configure --prefix=$INSTALLDIR
+    make
     make install
     export CPPFLAGS="$CPPFLAGS -I${INSTALLDIR}/include"
     export LDFLAGS="$LDFLAGS -L${INSTALLDIR}/lib"
@@ -34,8 +34,8 @@ function install_hdf5 {
     wget --no-check-certificate -q https://support.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.10.5.tar.gz
     tar -xzf hdf5-1.10.5.tar.gz
     cd hdf5-1.10.5
-    ./configure --prefix=$INSTALLDIR &> config.log
-    (make | awk 'NR % 100 == 0')
+    ./configure --prefix=$INSTALLDIR
+    make
     make install
     export LIBDIR=${INSTALLDIR}/lib
 }
@@ -46,8 +46,8 @@ function install_netcdf_c {
     wget --no-check-certificate -q https://www.gfd-dennou.org/library/netcdf/unidata-mirror/netcdf-4.4.1.tar.gz
     tar -xzf netcdf-4.4.1.tar.gz
     cd netcdf-4.4.1
-    ./configure --prefix=$INSTALLDIR &> config.log
-    make &> make.log
+    ./configure --prefix=$INSTALLDIR
+    make 
     make install
     export LD_LIBRARY_PATH=${INSTALLDIR}/lib
 }
@@ -58,8 +58,8 @@ function install_netcdf_fortran {
     wget --no-check-certificate -q https://www.gfd-dennou.org/arch/netcdf/unidata-mirror/netcdf-fortran-4.4.4.tar.gz
     tar -xzf netcdf-fortran-4.4.4.tar.gz
     cd netcdf-fortran-4.4.4
-    ./configure --prefix=$INSTALLDIR &> config.log
-    make &> make.log
+    ./configure --prefix=$INSTALLDIR
+    make 
     make install
 }
 
